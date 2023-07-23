@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('BUILD') {
+            steps {
+                touch job.log
+                date +"%D %X" > job.log
+                cat job.log
+            }
+        }
+        stage('TEST') {
+            steps {
+                echo 'Тестируем нашу сборку'
+            }
+        }
+        stage('DEPLOY') {
+            steps {
+                echo 'Deploy staging'
+                git add job.log
+                git commit -m "added job log"
+                git push
+            }
+        }
+    }
+}
