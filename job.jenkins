@@ -5,7 +5,7 @@ pipeline {
         stage('BUILD') {
             steps {
                 touch job.log
-                date +"%D %X" > job.log
+                echo 'date +"%D %X" > job.log'
                 cat job.log
             }
         }
@@ -17,9 +17,9 @@ pipeline {
         stage('DEPLOY') {
             steps {
                 echo 'Deploy staging'
-                git add job.log
-                git commit -m "added job log"
-                git push
+                echo 'git add job.log'
+                echo 'git commit -m "added job log"'
+                echo 'git push'
             }
         }
     }
