@@ -17,9 +17,9 @@ pipeline {
         stage('DEPLOY') {
             steps {
                 echo 'Deploy staging'
-                echo 'git add job.log'
-                echo 'git commit -m "added job log"'
-                echo 'git push'
+                sh 'git add job.log'
+                sh 'git commit -m "added job log"'
+                sh 'git push'
             }
         }
     }
